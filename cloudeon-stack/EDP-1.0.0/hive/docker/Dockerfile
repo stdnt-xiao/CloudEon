@@ -20,3 +20,6 @@ ENV MYSQL_CONN_URL=https://downloads.mysql.com/archives/get/p/3/file/mysql-conne
 RUN  curl -fSL $MYSQL_CONN_URL -o /home/hive/mysql-connector-java.tar.gz     && tar -xzvf /home/hive/mysql-connector-java.tar.gz -C /home/hive/   \
   && cp /home/hive/mysql-connector-java-${MYSQL_CONN_VERSION}/mysql-connector-java-${MYSQL_CONN_VERSION}.jar $HIVE_HOME/lib/mysql-connector-java.jar  \
   && rm /home/hive/mysql-connector-java.tar.gz     && rm -rf /home/hive/mysql-connector-java-${MYSQL_CONN_VERSION}
+
+RUN wget https://repo.maven.apache.org/maven2/org/apache/paimon/paimon-hive-connector-3.1/0.6.0-incubating/paimon-hive-connector-3.1-0.6.0-incubating.jar \
+    && cp paimon-hive-connector-3.1-0.6.0-incubating.jar $HIVE_HOME/lib/ && rm paimon-hive-connector-3.1-0.6.0-incubating.jar
